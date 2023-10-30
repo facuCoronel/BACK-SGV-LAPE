@@ -1,2 +1,6 @@
 
 *.vsidx
+*.vsidx
+*.dll
+*.pdb
+*.cache
