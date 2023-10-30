@@ -2,6 +2,7 @@
 using Domain.Dto.Cantidad;
 using Domain.Dto.Cliente;
 using Domain.Dto.Floracion;
+using Domain.Dto.Producto;
 using Domain.Dto.Proveedor;
 using Domain.Dto.UnidadMedida;
 using Domain.Entities;
@@ -42,6 +43,14 @@ namespace Domain
             CreateMap<Proveedor, ProveedorGetDto>();
             CreateMap<ProveedorPutDto, Proveedor>();
             CreateMap<Proveedor, ProveedorPutDto>();
+
+            //producto
+            CreateMap<Producto, ProductoGetDto>();
+            CreateMap<ProductoGetDto, Producto>();
+            CreateMap<Producto, ProductoPostDto>();
+            CreateMap<ProductoPostDto, Producto>();
+            CreateMap<Producto, ProductoPutDto>();
+            CreateMap<ProductoPutDto, Producto>();
         }
     }
 }
