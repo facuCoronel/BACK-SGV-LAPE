@@ -31,6 +31,9 @@ builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IProveedorRepository, ProveedorRepository>();
 builder.Services.AddScoped<IProveedorService, ProveedorService>();
 
+builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
+builder.Services.AddScoped<IProductoService, ProductoService>();
+
 
 #endregion
 
