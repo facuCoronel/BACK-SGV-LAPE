@@ -1,6 +1,7 @@
 ﻿using Domain.Core.Repositories;
 using Infraestructura.SqlServer.Lape_DbContext;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Infraestructura.SqlServer.Repositories
     public class BaseRepository<TEntity> : IDisposable, IBaseRepository<TEntity>
             where TEntity : class
     {
-        private readonly LapeDbContext _db;
+        public readonly LapeDbContext _db;
 
         public BaseRepository(LapeDbContext db)
         {
@@ -105,5 +106,9 @@ namespace Infraestructura.SqlServer.Repositories
         public void Add<T>(T obj) where T : class, Domain.Core.Interfaces.IEntity => _db.Set<T>().Add(obj);
         public T GetById<T>(object id) where T : class, Domain.Core.Interfaces.IEntity => _db.Set<T>().Find(id);
         public IEnumerable<T> GetAll<T>() where T : class, Domain.Core.Interfaces.IEntity => _db.Set<T>().ToList();
+        public IDbContextTransaction BeginTransaction() => _db.Database.BeginTransaction();
+        public void CommitTransaction() => _db.Database.CommitTransaction();
+        public void RollbackTransaction() => _db.Database.RollbackTransaction();
+        public IDbContextTransaction BeginTransaction(System.Data.IsolationLevel isolationLevel) => _db.Database.BeginTransaction(isolationLevel);
     }
 }

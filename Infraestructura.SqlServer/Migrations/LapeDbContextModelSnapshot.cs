@@ -72,15 +72,17 @@ namespace Infraestructura.SqlServer.Migrations
 
             modelBuilder.Entity("Domain.Entities.Detalle", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Cantidad")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("MaestroId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("MaestroId")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("ProductoId")
                         .HasColumnType("uniqueidentifier");
@@ -113,9 +115,14 @@ namespace Infraestructura.SqlServer.Migrations
 
             modelBuilder.Entity("Domain.Entities.Maestro", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CantidadTotal")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("ClienteId")
                         .HasColumnType("uniqueidentifier");

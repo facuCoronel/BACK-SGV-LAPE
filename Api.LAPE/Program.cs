@@ -35,6 +35,11 @@ builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
 builder.Services.AddScoped<IProductoService, ProductoService>();
 
 
+builder.Services.AddScoped<IMaestroRepository, MaestroRepository>();
+builder.Services.AddScoped<IDetalleRepository, DetalleRepository>();
+builder.Services.AddScoped<IVentasService, VentasService>();
+
+
 #endregion
 
 //Connection EntityFramework

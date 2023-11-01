@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Detalle : Entity<Guid>
+    public class Detalle : Entity<int>
     {
-        public Guid MaestroId { get; set; }  // Clave foránea que referencia al Maestro
+        public int MaestroId { get; set; }  // Clave foránea que referencia al Maestro
         public Guid ProductoId { get; set; }
         public int Cantidad { get; set; }
         public virtual Producto Producto { get; set; }

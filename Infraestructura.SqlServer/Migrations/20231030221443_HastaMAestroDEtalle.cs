@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infraestructura.SqlServer.Migrations
 {
     /// <inheritdoc />
-    public partial class maestroDetalle : Migration
+    public partial class HastaMAestroDEtalle : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,7 +15,8 @@ namespace Infraestructura.SqlServer.Migrations
                 name: "Maestro",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ClienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Fecha = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FechaEntrega = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -24,6 +25,7 @@ namespace Infraestructura.SqlServer.Migrations
                     Entregado = table.Column<bool>(type: "bit", nullable: false),
                     MontoPagado = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Total = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CantidadTotal = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -41,8 +43,9 @@ namespace Infraestructura.SqlServer.Migrations
                 name: "Detalle",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MaestroId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MaestroId = table.Column<int>(type: "int", nullable: false),
                     ProductoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Cantidad = table.Column<int>(type: "int", nullable: false)
                 },
@@ -55,12 +58,23 @@ namespace Infraestructura.SqlServer.Migrations
                         principalTable: "Maestro",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Detalle_Productos_ProductoId",
+                        column: x => x.ProductoId,
+                        principalTable: "Productos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Detalle_MaestroId",
                 table: "Detalle",
                 column: "MaestroId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Detalle_ProductoId",
+                table: "Detalle",
+                column: "ProductoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Maestro_ClienteId",

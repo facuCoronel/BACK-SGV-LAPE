@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructura.SqlServer.Migrations
 {
     [DbContext(typeof(LapeDbContext))]
-    [Migration("20231030171417_maestroDetalle")]
-    partial class maestroDetalle
+    [Migration("20231030221443_HastaMAestroDEtalle")]
+    partial class HastaMAestroDEtalle
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -75,15 +75,17 @@ namespace Infraestructura.SqlServer.Migrations
 
             modelBuilder.Entity("Domain.Entities.Detalle", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Cantidad")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("MaestroId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("MaestroId")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("ProductoId")
                         .HasColumnType("uniqueidentifier");
@@ -91,6 +93,8 @@ namespace Infraestructura.SqlServer.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("MaestroId");
+
+                    b.HasIndex("ProductoId");
 
                     b.ToTable("Detalle", (string)null);
                 });
@@ -114,9 +118,14 @@ namespace Infraestructura.SqlServer.Migrations
 
             modelBuilder.Entity("Domain.Entities.Maestro", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CantidadTotal")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("ClienteId")
                         .HasColumnType("uniqueidentifier");
@@ -262,7 +271,15 @@ namespace Infraestructura.SqlServer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("Domain.Entities.Producto", "Producto")
+                        .WithMany("Detalles")
+                        .HasForeignKey("ProductoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Maestro");
+
+                    b.Navigation("Producto");
                 });
 
             modelBuilder.Entity("Domain.Entities.Maestro", b =>
@@ -319,6 +336,11 @@ namespace Infraestructura.SqlServer.Migrations
                 });
 
             modelBuilder.Entity("Domain.Entities.Maestro", b =>
+                {
+                    b.Navigation("Detalles");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Producto", b =>
                 {
                     b.Navigation("Detalles");
                 });

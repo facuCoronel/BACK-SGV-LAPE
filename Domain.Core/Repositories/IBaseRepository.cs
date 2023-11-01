@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -27,5 +29,9 @@ namespace Domain.Core.Repositories
         void Add<T>(T obj) where T : class, Domain.Core.Interfaces.IEntity;
         T GetById<T>(object id) where T : class, Domain.Core.Interfaces.IEntity;
         IEnumerable<T> GetAll<T>() where T : class, Domain.Core.Interfaces.IEntity;
+        IDbContextTransaction BeginTransaction(IsolationLevel isolationLevel);
+        void CommitTransaction();
+        void RollbackTransaction();
+        IDbContextTransaction BeginTransaction();
     }
 }
