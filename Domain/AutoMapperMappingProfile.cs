@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
 using Domain.Dto.Cantidad;
 using Domain.Dto.Cliente;
+using Domain.Dto.Detalle;
 using Domain.Dto.Floracion;
+using Domain.Dto.Maestro;
 using Domain.Dto.Producto;
 using Domain.Dto.Proveedor;
 using Domain.Dto.UnidadMedida;
+using Domain.Dto.Ventas;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -51,6 +54,26 @@ namespace Domain
             CreateMap<ProductoPostDto, Producto>();
             CreateMap<Producto, ProductoPutDto>();
             CreateMap<ProductoPutDto, Producto>();
+
+            //maestro
+            CreateMap<Maestro, MaestroPostDto>();
+            CreateMap<MaestroPostDto, Maestro>();
+            CreateMap<MaestroGetDto, Maestro>();
+            CreateMap<Maestro, MaestroGetDto>();
+            CreateMap<Maestro, MaestroPutDto>();
+            CreateMap<MaestroPutDto, Maestro>();
+
+            //detalle
+            CreateMap<DetallePostDto, Detalle>();
+            CreateMap<Detalle, DetallePostDto>();
+            CreateMap<Detalle, DetalleGetDto>();
+            CreateMap<DetalleGetDto, Detalle>();
+            CreateMap<Detalle, DetallePutDto>();
+            CreateMap<DetallePutDto, Detalle>();
+
+            //ventas
+            //CreateMap<VentasGetDto, MaestroGetDto>()
+                //.ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.MaestroGet.Id));  // Configura el mapeo entre VentasGetDto y MaestroGetDto
         }
     }
 }
