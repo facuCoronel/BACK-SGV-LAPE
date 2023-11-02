@@ -20,5 +20,18 @@ namespace Infraestructura.SqlServer.Repositories
         {
             return base.GetById<Producto>(id).PrecioVenta;
         }
+
+
+        public bool ActualizarStockVentas(Guid productoId, decimal cantidad)
+        {
+            var update = base.ForFilter<Stock>(x => x.ProductoId == productoId).FirstOrDefault();
+
+            update.Cantidad = update.Cantidad - cantidad;
+
+            base.Update(update);
+
+            return true;
+            
+        }
     }
 }

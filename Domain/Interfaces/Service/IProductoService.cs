@@ -1,4 +1,5 @@
-﻿using Domain.Dto.Producto;
+﻿using Domain.Core.Services;
+using Domain.Dto.Producto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces.Service
 {
-    public interface IProductoService
+    public interface IProductoService : IDomainService
     {
         bool PostProducto(ProductoPostDto prodPost);
         bool PutProducto(ProductoPutDto putProd);

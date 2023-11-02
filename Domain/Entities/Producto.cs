@@ -23,5 +23,6 @@ namespace Domain.Entities
         public virtual Proveedor Proveedor { get; set; }
         public virtual Cantidad Cantidad { get; set; }
         public virtual Floracion Floracion { get; set; }
+        public ICollection<Stock> Stocks { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using Domain.Dto.Floracion;
 using Domain.Dto.Maestro;
 using Domain.Dto.Producto;
 using Domain.Dto.Proveedor;
+using Domain.Dto.Stock;
 using Domain.Dto.UnidadMedida;
 using Domain.Dto.Ventas;
 using Domain.Entities;
@@ -70,6 +71,16 @@ namespace Domain
             CreateMap<DetalleGetDto, Detalle>();
             CreateMap<Detalle, DetallePutDto>();
             CreateMap<DetallePutDto, Detalle>();
+
+
+            //stock
+            CreateMap<StockPostDto, Stock>();
+            CreateMap<Stock, StockPostDto>();
+            CreateMap<StockPutDto,  Stock>();
+            CreateMap<Stock, StockPutDto>();
+            CreateMap<StockGetDto, Stock>();
+            CreateMap<Stock, StockGetDto>();
+
 
             //ventas
             //CreateMap<VentasGetDto, MaestroGetDto>()

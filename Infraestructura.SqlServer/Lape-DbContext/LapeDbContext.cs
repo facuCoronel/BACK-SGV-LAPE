@@ -1,4 +1,5 @@
-﻿using Infraestructura.SqlServer.Configuration;
+﻿using Domain.Entities;
+using Infraestructura.SqlServer.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections;
@@ -14,13 +15,20 @@ namespace Infraestructura.SqlServer.Lape_DbContext
         public LapeDbContext(DbContextOptions options) : base(options)
         {
         }
+        DbSet<Producto> Producto { get; set; }
+        DbSet<Floracion> Floracion { get; set; }
+        DbSet<Maestro> Maestro { get; set; }
+        DbSet<Detalle> Detalle { get; set; }
+        DbSet<Cliente> Cliente { get; set; }
+        DbSet<Stock> Stock { get; set; }
+        DbSet<UnidadMedida> UnidadMedida { get; set; }
+        DbSet<Cantidad> Cantidad { get; set; }
+        DbSet<Proveedor> Proveedor { get; set; }
 
-        //DbSet<Origin> Origin { get; set; }
-        //DbSet<Product> Product { get; set; }
-        //DbSet<Stock> Stock { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //optionsBuilder.UseLazyLoadingProxies();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -41,6 +49,8 @@ namespace Infraestructura.SqlServer.Lape_DbContext
             modelBuilder.ApplyConfiguration(new Maestro_Configuration());
             //detalle
             modelBuilder.ApplyConfiguration(new Detalle_Configuration());
+            //stock
+            modelBuilder.ApplyConfiguration(new Stock_Configuration());
         }
     }
 }
