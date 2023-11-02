@@ -37,7 +37,10 @@ namespace Infraestructura.SqlServer.Lape_DbContext
             modelBuilder.ApplyConfiguration(new Producto_Configuation());
             //proveedor
             modelBuilder.ApplyConfiguration(new Proveedor_Configuration());
-
+            //maestro
+            modelBuilder.ApplyConfiguration(new Maestro_Configuration());
+            //detalle
+            modelBuilder.ApplyConfiguration(new Detalle_Configuration());
         }
     }
 }

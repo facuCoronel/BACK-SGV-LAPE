@@ -13,5 +13,6 @@ namespace Domain.Entities
         public string Email { get; set; }
         public string TelefonoFijo { get; set; }
         public string Celular { get; set; }
+        public ICollection<Maestro> Maestros { get; set; }
     }
 }

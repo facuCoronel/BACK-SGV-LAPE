@@ -17,11 +17,11 @@ namespace Domain.Entities
         public decimal PrecioVenta { get; set; }
         public string Origen { get; set; }
         public Guid ProveedorId { get; set; }
-        public virtual Proveedor Proveedor { get; set; }
         public int CantidadId { get; set; }
-        public virtual Cantidad Cantidad { get; set; }
         public int FloracionId { get; set; }
+        public ICollection<Detalle> Detalles { get; set; }
+        public virtual Proveedor Proveedor { get; set; }
+        public virtual Cantidad Cantidad { get; set; }
         public virtual Floracion Floracion { get; set; }
-
     }
 }
