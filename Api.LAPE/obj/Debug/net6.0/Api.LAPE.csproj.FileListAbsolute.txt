@@ -378,3 +378,5 @@ C:\Users\facun\Desktop\SGTLAPE\BACK-SGV-LAPE\Api.LAPE\obj\Debug\net6.0\refint\Ap
 C:\Users\facun\Desktop\SGTLAPE\BACK-SGV-LAPE\Api.LAPE\obj\Debug\net6.0\Api.LAPE.pdb
 C:\Users\facun\Desktop\SGTLAPE\BACK-SGV-LAPE\Api.LAPE\obj\Debug\net6.0\Api.LAPE.genruntimeconfig.cache
 C:\Users\facun\Desktop\SGTLAPE\BACK-SGV-LAPE\Api.LAPE\obj\Debug\net6.0\ref\Api.LAPE.dll
+C:\Users\facun\Desktop\SGTLAPE\BACK-SGV-LAPE\Api.LAPE\bin\Debug\net6.0\Castle.Core.dll
+C:\Users\facun\Desktop\SGTLAPE\BACK-SGV-LAPE\Api.LAPE\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll

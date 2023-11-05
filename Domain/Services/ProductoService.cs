@@ -51,7 +51,9 @@ namespace Domain.Services
 
         public IEnumerable<ProductoGetDto> GetAll()
         {
-            return _mapper.Map<IEnumerable<ProductoGetDto>>(_repository.GetAll());
+            var response = _repository.GetAll();
+            var result = _mapper.Map<IEnumerable<ProductoGetDto>>(response);
+            return result;
         }
 
         public ProductoGetDto GetById(Guid id)
@@ -61,7 +63,8 @@ namespace Domain.Services
 
         public bool DeleteProducto(Guid id)
         {
-            _repository.Remove(_repository.GetById(id));
+            var prodDel = _repository.GetById(id);
+            _repository.Remove(prodDel);
             _repository.Commit();
             return true;
         }

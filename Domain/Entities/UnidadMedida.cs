@@ -11,6 +11,6 @@ namespace Domain.Entities
     {
         public string UnidadDeMedida { get; set; }
         public string Diminutivo { get; set; }
-        public ICollection<Cantidad> Cantidades { get; set; }
+        public virtual ICollection<Cantidad> Cantidades { get; set; }
     }
 }

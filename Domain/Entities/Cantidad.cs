@@ -9,9 +9,12 @@ namespace Domain.Entities
 {
     public class Cantidad : Entity<int>
     {
+        public Cantidad()
+        {
+        }
         public int Valor { get; set; }
         public int UnidadMedidaId { get; set; }
         public virtual UnidadMedida UnidadMedida { get; set; }
-        public ICollection<Producto> Productos { get; set; }
+        public virtual ICollection<Producto> Productos { get; set; }
     }
 }

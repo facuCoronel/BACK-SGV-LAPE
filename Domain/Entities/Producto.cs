@@ -19,10 +19,15 @@ namespace Domain.Entities
         public Guid ProveedorId { get; set; }
         public int CantidadId { get; set; }
         public int FloracionId { get; set; }
-        public ICollection<Detalle> Detalles { get; set; }
+        public virtual ICollection<Detalle> Detalles { get; set; }
         public virtual Proveedor Proveedor { get; set; }
         public virtual Cantidad Cantidad { get; set; }
         public virtual Floracion Floracion { get; set; }
-        public ICollection<Stock> Stocks { get; set; }
+        public virtual ICollection<Stock> Stocks { get; set; }
+
+        public Producto()
+        {
+            
+        }
     }
 }

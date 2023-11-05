@@ -13,6 +13,7 @@ using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,6 +31,7 @@ namespace Domain
 
             //floracion
             CreateMap<Floracion, FloracionGetDto>();
+            CreateMap<FloracionGetDto, Floracion>();
 
 
             //cliente
@@ -49,8 +51,13 @@ namespace Domain
             CreateMap<Proveedor, ProveedorPutDto>();
 
             //producto
+            //CreateMap<Producto, ProductoGetDto>();
             CreateMap<Producto, ProductoGetDto>();
             CreateMap<ProductoGetDto, Producto>();
+            CreateMap<Floracion, FloracionProductDto>(); // utiliza producto para el mapeo
+            CreateMap<Proveedor, ProveedorProductDto>(); // lo mismo que arriba
+            CreateMap<Cantidad, CantidadProductDto>();
+            CreateMap<UnidadMedida, UnidadMedidaCantidadProductDto>();
             CreateMap<Producto, ProductoPostDto>();
             CreateMap<ProductoPostDto, Producto>();
             CreateMap<Producto, ProductoPutDto>();
@@ -80,6 +87,12 @@ namespace Domain
             CreateMap<Stock, StockPutDto>();
             CreateMap<StockGetDto, Stock>();
             CreateMap<Stock, StockGetDto>();
+            CreateMap<Producto, StockProductoGetDto>();
+            CreateMap<StockUnidadMedidaCantidadStockDto, UnidadMedida>();
+            CreateMap<UnidadMedida, StockUnidadMedidaCantidadStockDto>();
+            CreateMap<Cantidad,StockCantidadDto>();
+            CreateMap<StockCantidadDto, Cantidad>();
+
 
 
             //ventas

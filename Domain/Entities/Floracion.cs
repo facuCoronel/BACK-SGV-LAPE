@@ -10,6 +10,6 @@ namespace Domain.Entities
     public class Floracion : Entity<int>
     {
         public string Tipo { get; set; }
-        public ICollection<Producto> Productos { get; set; }
+        public virtual ICollection<Producto> Productos { get; set; }
     }
 }

@@ -81,6 +81,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors("pruebaTecnica");
+
 app.UseAuthorization();
 
 app.MapControllers();

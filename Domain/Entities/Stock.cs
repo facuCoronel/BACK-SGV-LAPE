@@ -12,5 +12,10 @@ namespace Domain.Entities
         public decimal Cantidad { get; set; }
         public Guid ProductoId { get; set; }
         public virtual Producto Producto { get; set; }
+
+        public Stock()
+        {
+            
+        }
     }
 }

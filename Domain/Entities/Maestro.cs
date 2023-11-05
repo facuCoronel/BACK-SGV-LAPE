@@ -20,7 +20,7 @@ namespace Domain.Entities
         public int CantidadTotal { get; set; }
         public bool Estado { get; set; }
 
-        public ICollection<Detalle> Detalles { get; set; }  // Relación de navegación uno a muchos con Detalle
+        public virtual ICollection<Detalle> Detalles { get; set; }  // Relación de navegación uno a muchos con Detalle
         public virtual Cliente Cliente { get; set; }
     }
 }
