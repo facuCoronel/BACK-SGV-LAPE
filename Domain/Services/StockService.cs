@@ -24,6 +24,11 @@ namespace Domain.Services
 
         public bool InsertStock(StockPostDto stockPostDto)
         {
+            var validator = _stockRepository.ForFilter<Stock>(x => stockPostDto.ProductoId == x.ProductoId).FirstOrDefault();
+            if (!(validator is null))
+                throw new Exception("Ya existe el articulo con stock, no se pudo crear el registro");
+
+
             var entity = _mapper.Map<Stock>(stockPostDto);
             _stockRepository.Add(entity);
             _stockRepository.Commit();
